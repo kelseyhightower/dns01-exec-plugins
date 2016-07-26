@@ -104,6 +104,8 @@ cat dns01-bad.json | \
   dns01
 ```
 
+stderr:
+
 ```
 invalid character 'B' looking for beginning of value
 ```
