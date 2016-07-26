@@ -104,7 +104,7 @@ cat dns01-bad.json | \
   dns01
 ```
 
-stderr:
+A single error message is printed to stderr.
 
 ```
 invalid character 'B' looking for beginning of value
