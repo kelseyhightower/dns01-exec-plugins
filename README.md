@@ -15,7 +15,7 @@ To support multiple DNS providers the `kube-cert-manager` supports an exec based
 
 ### Stdin
 
-Arbitrary configuration data based will be written on stdin. The contents of the configuration data will be provider specific and must be documented separately.
+Arbitrary configuration data will be written on stdin. The contents of the configuration data will be provider specific and must be documented separately.
 
 ## Error Handling
 
