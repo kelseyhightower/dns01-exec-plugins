@@ -2,6 +2,10 @@
 
 To support multiple DNS providers the `kube-cert-manager` supports an exec based plugin system.
 
+## Overview
+
+DNS-01 plugins are responsible for creating or deleting a single DNS TXT record for a specific DNS provider.
+
 ## Exec Interface
 
 ### Environment Variables
