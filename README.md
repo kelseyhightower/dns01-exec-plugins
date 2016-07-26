@@ -37,7 +37,7 @@ A single error should be printed to stderr that will be logged by the `kube-cert
 
 ## Examples
 
-The following example executes a binary named `dns01-noop`. The `dns01-noop` plugin does not create or delete DNS records. It simply logs a message describing the operation.
+The following example executes a binary named `dns01`. The `dns01` plugin does not create or delete DNS records, but it does provide a good example of how to write a DNS-01 plugin.
 
 ### Create
 
