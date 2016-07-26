@@ -25,12 +25,6 @@ import (
 	"google.golang.org/api/dns/v1"
 )
 
-type Client struct {
-	domain  string
-	project string
-	*dns.Service
-}
-
 var httpClient http.Client
 
 func init() {
@@ -49,7 +43,13 @@ func init() {
 	}
 }
 
-func newClient(serviceAccount []byte, project, domain string) (*Client, error) {
+type client struct {
+	domain  string
+	project string
+	*dns.Service
+}
+
+func newClient(serviceAccount []byte, project, domain string) (*client, error) {
 	jwtConfig, err := google.JWTConfigFromJSON(
 		serviceAccount,
 		dns.NdevClouddnsReadwriteScope,
@@ -66,10 +66,10 @@ func newClient(serviceAccount []byte, project, domain string) (*Client, error) {
 		return nil, err
 	}
 
-	return &Client{domain, project, service}, nil
+	return &client{domain, project, service}, nil
 }
 
-func (c *Client) create(fqdn, value string, ttl int) error {
+func (c *client) create(fqdn, value string, ttl int) error {
 	zones, err := c.ManagedZones.List(c.project).Do()
 	if err != nil {
 		return err
@@ -112,7 +112,7 @@ func (c *Client) create(fqdn, value string, ttl int) error {
 	return nil
 }
 
-func (c *Client) delete(fqdn string) error {
+func (c *client) delete(fqdn string) error {
 	zones, err := c.ManagedZones.List(c.project).Do()
 	if err != nil {
 		return err
