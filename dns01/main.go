@@ -14,10 +14,15 @@ type Config struct {
 }
 
 func main() {
+	apiVersion := os.Getenv("APIVERSION")
 	command := os.Getenv("COMMAND")
 	domain := os.Getenv("DOMAIN")
 	fqdn := os.Getenv("FQDN")
 	token := os.Getenv("TOKEN")
+
+	if apiVersion != "v1" {
+		os.Exit(3)
+	}
 
 	data, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
